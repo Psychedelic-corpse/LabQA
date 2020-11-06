@@ -2,6 +2,49 @@ var express = require('express');
 var router = express.Router();
 const User = require('../models/user.model');
 
+/*
+mini tutorial de sequelize
+
+selección:
+  masiva: Modelo.findAll(queryObject)
+  singular: Modelo.findOne(queryObject)
+  porId: Modelo.findByPk(queryObject)
+
+inserción:
+  singular: Modelo.create(attributeObject)
+
+modificación:
+  singular: Modelo.update(attributeObject, queryObject)
+
+borrado:
+  logico: Modelo.update({ isDeleted: true }, queryObject)
+  físico: Modelo.destroy(queryObject)
+
+---
+
+attributeObject = {
+  columna: valor donde su tipo de dato es el definido en el esquema
+}
+
+queryObject = {
+  where: {
+    id: numero
+    isDeleted: booleano
+    ...
+  }
+}
+
+en definitiva cualquier columna de esa tabla, equivale al WHERE de la query SQL ejemplo:
+SELECT ... WHERE name = 'pepito' AND dni = '32565236'
+queryObject = {
+  where: {
+    name: 'pepito',
+    dni: '32565236'
+  }
+}
+
+*/
+
 /* Post users listing. */
 router.post('/', async function(req, res, next) {
   try {
