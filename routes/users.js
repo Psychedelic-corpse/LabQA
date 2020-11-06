@@ -1,9 +1,15 @@
 var express = require('express');
 var router = express.Router();
+const User = require('../models/user.model');
 
 /* Post users listing. */
-router.post('/', function(req, res, next) {
-  res.json(req.body);
+router.post('/', async function(req, res, next) {
+  try {
+    const user = await User.create(req.body)
+    res.send(user)
+  } catch (error) {
+    res.send(error)
+  }
 });
 
 router.get('/', (req,res, next)=>{
