@@ -1,5 +1,4 @@
 var express = require('express');
-const app = require('../app');
 var router = express.Router();
 
 /* Post users listing. */
@@ -22,7 +21,7 @@ router.get('/', (req,res, next)=>{
   })
 })
 
-app.put('/',(req, res, next)=>{
+router.put('/', (req, res, next) => {
     res.json({
         "name":"Miguel",
         "lastname": "Errand",
