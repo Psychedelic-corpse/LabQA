@@ -41,5 +41,13 @@ router.put('/', (req, res, next) => {
 //     res.json()
 // })
 
+router.get('/:id', async (req, res, next) => {
+  try {
+    const user = await User.findByPk(parseInt(req.params.id))
+    res.send(user)
+  } catch (error) {
+    res.send(error.message)
+  }
+})
 
 module.exports = router;
